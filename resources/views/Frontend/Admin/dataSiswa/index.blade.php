@@ -17,6 +17,8 @@
                                 <th>No</th>
                                 <th>NIS</th>
                                 <th>Nama Siswa</th>
+                                <th>Email</th>
+                                <th>No HP</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Bidang Keahlian</th>
                                 <th>Program Keahlian</th>
@@ -32,6 +34,8 @@
                                 <td>1</td>
                                 <td>121212121</td>
                                 <td>Joni</td>
+                                <td>joni@gmail.com</td>
+                                <td>082354678965</td>
                                 <td>Laki-laki</td>
                                 <td>TKJ</td>
                                 <td>TKJ</td>

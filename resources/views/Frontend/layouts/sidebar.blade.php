@@ -97,8 +97,8 @@
         {{-- Mentor --}}
     @elseif (Auth::guard()->user()->role == 'Mentor')
         <div class="">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item {{ $page == 'home' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -106,24 +106,54 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item {{ $page == 'cek-kegiatan' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('mentor-show-cek-kegiatan') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Upload Kegiatan</span></a>
+                    <span>Cek Kegiatan Siswa</span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+            <li class="nav-item {{ $page == 'input-nilai' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('mentor-show-input-nilai') }}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Penilaian</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Cetak Sertifikat</span></a>
+                    <span>Input Nilai</span></a>
             </li>
         </div>
         {{-- end Mentor --}}
+
+        {{-- Alumni --}}
+    @elseif (Auth::guard()->user()->role == 'Alumni')
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item {{ $page == 'home' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+        {{-- end Alumni --}}
+        {{-- Industri --}}
+    @elseif (Auth::guard()->user()->role == 'Industri')
+        <div class="">
+            <li class="nav-item {{ $page == 'home' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('home') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li class="nav-item {{ $page == 'perusahaan' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('industri-data-perusahaan') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Data Perusahaan</span></a>
+            </li>
+
+            <li class="nav-item {{ $page == 'mentor' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('industri-data-mentor') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Data Mentor</span></a>
+            </li>
+        </div>
+        {{-- end Industri --}}
     @endif
 
     <!-- Divider -->

@@ -12,6 +12,24 @@
                 <form action="#" method="POST">
                     @csrf
                     <div class="form-group">
+                        <label for="kehadiran">Kehadiran</label> <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Hadir</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="option2">
+                            <label class="form-check-label" for="inlineRadio2">Sakit</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="option3">
+                            <label class="form-check-label" for="inlineRadio3">Izin</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="tanggal">Tanggal</label>
                         <input type="datetime-local" class="form-control" placeholder="Masukkan Waktu" name="tanggal">
                     </div>

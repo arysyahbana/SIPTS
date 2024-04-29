@@ -1,12 +1,12 @@
 @extends('Frontend.layouts.app')
 
-@section('title', 'Input Nilai')
+@section('title', 'Cek Kegiatan')
 
 @section('main-content')
     <div class="container-fluid">
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Data Siswa</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Cek Kegiatan Siswa</h6>
             </div>
             <div class="card-body text-dark">
                 <table class="table table-bordered text-dark" id="dataTable" width="100%" cellspacing="0">
@@ -25,10 +25,7 @@
                             <td>123456</td>
                             <td>Joni</td>
                             <td>TKJ</td>
-                            <td>
-                                <a href="{{ route('showed-input-nilai') }}" class="btn btn-sm btn-success">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                            </td>
+                            <td><a href="{{ route('detail-cek-kegiatan') }}" class="btn btn-sm btn-danger">Lihat</a></td>
                         </tr>
                     </tbody>
                 </table>

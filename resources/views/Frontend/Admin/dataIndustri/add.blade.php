@@ -25,11 +25,11 @@
                         <input type="text" class="form-control" placeholder="Masukkan Alamat" name="alamat">
                     </div>
                     <div class="form-group">
-                        <label for="hp">No Hp</label>
+                        <label for="hp">No Hp Perusahaan</label>
                         <input type="number" class="form-control" placeholder="Masukkan No Hp" name="hp">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Email Perusahaan</label>
                         <input type="email" class="form-control" placeholder="Masukkan Email" name="email">
                     </div>
                     <div class="form-group">
@@ -39,6 +39,10 @@
                     <div class="form-group">
                         <label for="mentor">Mentor</label>
                         <input type="mentor" class="form-control" placeholder="Masukkan Mentor" name="mentor">
+                    </div>
+                    <div class="form-group">
+                        <label for="hp">No Hp Mentor</label>
+                        <input type="number" class="form-control" placeholder="Masukkan No Hp" name="hp">
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>

@@ -169,6 +169,148 @@
                 Siswa</h3>
             <div class="row container mx-auto mt-5">
                 {{-- data siswa --}}
+                <div class="col col-12 col-lg-6">
+                    <h5 class="font-weight-bold text-dark">Data Pribadi</h5>
+                    <div class="card">
+                        <div class="card-header bg-danger text-white" style="max-height: 6rem">
+                            <div class="row">
+                                <div class="col col-6 col-lg-4">
+                                    <h4 class="font-weight-bold">{{ Auth::user()->name }}</h4>
+                                    <p>{{ Auth::user()->role }}</p>
+                                </div>
+                                <div class="col col-6 col-lg-4 text-center pt-4">
+                                    <img src="{{ asset('dist/img/undraw_profile_1.svg') }}" alt=""
+                                        class="img-fluid rounded-pill shadow" style="width: 6rem;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body mt-5 text-dark">
+                            <h6 class="card-title text-center">Berikut data informasi akun anda saat ini :</h6>
+                            <div class="ml-2 pl-2 ml-lg-5 pl-lg-5">
+                                <p>
+                                <div class="row">
+                                    <div class="col col-3">
+                                        Nama </div>
+                                    <div class="col-col-6 px-3">
+                                        {{ Auth::user()->name }}
+                                    </div>
+                                </div>
+                                </p>
+                                <p>
+                                <div class="row">
+                                    <div class="col col-3">
+                                        NIS
+                                    </div>
+                                    <div class="col col-6">121221
+                                    </div>
+                                </div>
+                                </p>
+                                <p>
+                                <div class="row">
+                                    <div class="col col-3">
+                                        Email
+                                    </div>
+                                    <div class="col col-6">{{ Auth::user()->email }}
+                                    </div>
+                                </div>
+                                <p>
+                                <div class="row">
+                                    <div class="col col-3">
+                                        No HP
+                                    </div>
+                                    <div class="col col-6">{{ Auth::user()->hp }}
+                                    </div>
+                                </div>
+                                </p>
+                            </div>
+                            <a href="{{ route('update-profile-siswa') }}"
+                                class="btn btn-danger rounded-pill form-control">Profile</a>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- data magang siswa --}}
+                <div class="col col-12 col-lg-6">
+                    <h5 class="font-weight-bold text-dark">Data Industri</h5>
+                    <div class="card">
+                        <div class="card-header bg-danger text-white" style="max-height: 6rem">
+                            <div class="row">
+                                <div class="col col-6 col-lg-4">
+                                    <h4 class="font-weight-bold">AACom</h4>
+                                    <p>Industri</p>
+                                </div>
+                                <div class="col col-6 col-lg-4 text-center pt-4">
+                                    <img src="{{ asset('dist/img/undraw_profile_3.svg') }}" alt=""
+                                        class="img-fluid rounded-pill shadow" style="width: 6rem;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body mt-5 text-dark">
+                            <h6 class="card-title text-center">Berikut data informasi industri anda saat ini :</h6>
+                            <div class="ml-2 pl-2 ml-lg-5 pl-lg-5">
+                                <p>
+                                <div class="row">
+                                    <div class="col col-6 col-lg-4">
+                                        Nama Perusahaan </div>
+                                    <div class="col-col-6 px-3">
+                                        AACom
+                                    </div>
+                                </div>
+                                </p>
+                                <p>
+                                <div class="row">
+                                    <div class="col col-6 col-lg-4">
+                                        Alamat
+                                    </div>
+                                    <div class="col col-6">Jln. Bukittinggi-Padang
+                                    </div>
+                                </div>
+                                </p>
+                                <p>
+                                <div class="row">
+                                    <div class="col col-6 col-lg-4">
+                                        Mentor
+                                    </div>
+                                    <div class="col col-6">Danu
+                                    </div>
+                                </div>
+                                <p>
+                                <div class="row">
+                                    <div class="col col-6 col-lg-4">
+                                        No HP Mentor
+                                    </div>
+                                    <div class="col col-6">082365748945
+                                    </div>
+                                </div>
+                                </p>
+                                <p>
+                                <div class="row">
+                                    <div class="col col-6 col-lg-4">
+                                        Pamong
+                                    </div>
+                                    <div class="col col-6">Dadang
+                                    </div>
+                                </div>
+                                </p>
+                                <p>
+                                <div class="row">
+                                    <div class="col col-6 col-lg-4">
+                                        No HP Pamong
+                                    </div>
+                                    <div class="col col-6">082365748923
+                                    </div>
+                                </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @elseif (Auth::user()->role == 'Alumni')
+            <h3 class="font-weight-bold text-dark text-center">Sistem Informasi Praktek Kerja Lapangan dan Tracer Study
+            </h3>
+            <div class="row container mx-auto mt-5 justify-content-center">
+                {{-- data siswa --}}
                 <div class="col col-6">
                     <h5 class="font-weight-bold text-dark">Data Pribadi</h5>
                     <div class="card">
@@ -223,88 +365,15 @@
                                 </div>
                                 </p>
                             </div>
-                            <a href="#" class="btn btn-danger rounded-pill form-control">Profile</a>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- data magang siswa --}}
-                <div class="col col-6">
-                    <h5 class="font-weight-bold text-dark">Data Industri</h5>
-                    <div class="card">
-                        <div class="card-header bg-danger text-white" style="max-height: 6rem">
-                            <div class="row">
-                                <div class="col col-4">
-                                    <h4 class="font-weight-bold">AACom</h4>
-                                    <p>Industri</p>
-                                </div>
-                                <div class="col col-4 text-center pt-4">
-                                    <img src="{{ asset('dist/img/undraw_profile_3.svg') }}" alt=""
-                                        class="img-fluid rounded-pill shadow" style="width: 6rem;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body mt-5 text-dark">
-                            <h6 class="card-title text-center">Berikut data informasi industri anda saat ini :</h6>
-                            <div class="ml-5 pl-5">
-                                <p>
-                                <div class="row">
-                                    <div class="col col-4">
-                                        Nama Perusahaan </div>
-                                    <div class="col-col-6 px-3">
-                                        AACom
-                                    </div>
-                                </div>
-                                </p>
-                                <p>
-                                <div class="row">
-                                    <div class="col col-4">
-                                        Alamat
-                                    </div>
-                                    <div class="col col-6">Jln. Bukittinggi-Padang
-                                    </div>
-                                </div>
-                                </p>
-                                <p>
-                                <div class="row">
-                                    <div class="col col-4">
-                                        Mentor
-                                    </div>
-                                    <div class="col col-6">Danu
-                                    </div>
-                                </div>
-                                <p>
-                                <div class="row">
-                                    <div class="col col-4">
-                                        No HP Mentor
-                                    </div>
-                                    <div class="col col-6">082365748945
-                                    </div>
-                                </div>
-                                </p>
-                                <p>
-                                <div class="row">
-                                    <div class="col col-4">
-                                        Pamong
-                                    </div>
-                                    <div class="col col-6">Dadang
-                                    </div>
-                                </div>
-                                </p>
-                                <p>
-                                <div class="row">
-                                    <div class="col col-4">
-                                        No HP Pamong
-                                    </div>
-                                    <div class="col col-6">082365748923
-                                    </div>
-                                </div>
-                                </p>
-                            </div>
+                            <a href="{{ route('update-profile-alumni') }}"
+                                class="btn btn-danger rounded-pill form-control">Update Profile</a>
                         </div>
                     </div>
                 </div>
             </div>
+        @elseif (Auth::user()->role == 'Industri')
+            <h3 class="font-weight-bold text-dark text-center">Sistem Informasi Praktek Kerja Lapangan dan Tracer Study
+                Admin Industri</h3>
         @endif
     </div>
 

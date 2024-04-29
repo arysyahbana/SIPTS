@@ -20,6 +20,14 @@
                         <input type="text" class="form-control" placeholder="Masukkan Nama Siswa" name="name">
                     </div>
                     <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" placeholder="Masukkan Email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="hp">No HP</label>
+                        <input type="number" class="form-control" placeholder="Masukkan No HP" name="hp">
+                    </div>
+                    <div class="form-group">
                         <label for="name">Jenis Kelamin</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="gender" id="exampleRadios1"

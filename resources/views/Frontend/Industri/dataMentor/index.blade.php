@@ -1,13 +1,13 @@
 @extends('Frontend.layouts.app')
 
-@section('title', 'Data Industri')
+@section('title', 'Data Mentor')
 
 @section('main-content')
     <div class="container-fluid">
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Data Industri</h6>
-                <a href="{{ route('add-industri') }}" class="btn btn-sm btn-primary">Add</a>
+                <h6 class="m-0 font-weight-bold text-primary">Data Mentor</h6>
+                <a href="{{ route('add-industri-data-mentor') }}" class="btn btn-sm btn-primary">Add Mentor</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -15,29 +15,22 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>MOU</th>
-                                <th>Nama Perusahaan</th>
-                                <th>Alamat</th>
-                                <th>No Hp Perusahaan</th>
-                                <th>Email Perusahaan</th>
-                                <th>Nama Siswa</th>
-                                <th>Mentor</th>
+                                <th>Nama Mentor</th>
                                 <th>No HP Mentor</th>
+                                <th>Email Mentor</th>
+                                <th>Nama Siswa</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>121212121</td>
-                                <td>AACom</td>
-                                <td>Jln.awokawokawok</td>
-                                <td>082376458765</td>
-                                <td>aacom@gmail.com</td>
+                                <td>Dadang</td>
+                                <td>082345127689</td>
+                                <td>dadang@gmail.com</td>
                                 <td>Joni</td>
-                                <td>Budi</td>
-                                <td>082376458765</td>
-                                <td><a href="{{ route('edit-industri') }}" class="btn btn-sm btn-success">Edit</a>
+                                <td><a href="{{ route('edit-industri-data-mentor') }}"
+                                        class="btn btn-sm btn-success">Edit</a>
                                     <a href="#" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>

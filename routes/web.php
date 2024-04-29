@@ -106,6 +106,12 @@ Route::get('/siswa/penilaian', function () {
     $page = 'penilaian';
     return view('Frontend.Siswa.Penilaian.index', compact('page'));
 })->name('show-penilaian')->middleware('auth');
+
+// profile
+Route::get('/Siswa/update-profile', function () {
+    $page = 'home';
+    return view('Frontend.Siswa.editProfile', compact('page'));
+})->name('update-profile-siswa')->middleware('auth');
 // end Menu Siswa
 
 // Menu Pamong
@@ -120,8 +126,68 @@ Route::get('/pamong/cek-kegiatan/detail', function () {
 })->name('detail-cek-kegiatan')->middleware('auth');
 
 // input Nilai
-Route::get('/pamong/input-nilai', function () {
+Route::get('/pamong/data-siswa', function () {
     $page = 'input-nilai';
     return view('Frontend.Pamong.inputNilai.index', compact('page'));
 })->name('show-input-nilai')->middleware('auth');
+Route::get('/pamong/data-siswa/input-nilai', function () {
+    $page = 'input-nilai';
+    return view('Frontend.Pamong.inputNilai.detail', compact('page'));
+})->name('showed-input-nilai')->middleware('auth');
 // end Menu Pamong
+
+// Menu Alumni
+Route::get('/Alumni/update-profile', function () {
+    $page = 'home';
+    return view('Frontend.Alumni.editProfile', compact('page'));
+})->name('update-profile-alumni')->middleware('auth');
+// end Menu Alumni
+
+// Menu Mentor
+Route::get('/mentor/cek-kegiatan', function () {
+    $page = 'cek-kegiatan';
+    return view('Frontend.Mentor.kegiatanSiswa.index', compact('page'));
+})->name('mentor-show-cek-kegiatan')->middleware('auth');
+Route::get('/mentor/cek-kegiatan/detail', function () {
+    $page = 'cek-kegiatan';
+    return view('Frontend.Mentor.kegiatanSiswa.detail', compact('page'));
+})->name('mentor-detail-cek-kegiatan')->middleware('auth');
+
+// input Nilai
+Route::get('/mentor/data-siswa', function () {
+    $page = 'input-nilai';
+    return view('Frontend.Mentor.inputNilai.index', compact('page'));
+})->name('mentor-show-input-nilai')->middleware('auth');
+Route::get('/mentor/data-siswa/input-nilai', function () {
+    $page = 'input-nilai';
+    return view('Frontend.Mentor.inputNilai.detail', compact('page'));
+})->name('mentor-showed-input-nilai')->middleware('auth');
+// end Menu Mentor
+
+// Menu Industri
+// Data Perusahaan
+Route::get('/industri/data-perusahaan', function () {
+    $page = 'perusahaan';
+    return view('Frontend.Industri.dataPerusahaan.index', compact('page'));
+})->name('industri-data-perusahaan');
+Route::get('/industri/edit-data-perusahaan', function () {
+    $page = 'perusahaan';
+    return view('Frontend.Industri.dataPerusahaan.edit', compact('page'));
+})->name('edit-industri-data-perusahaan');
+// end Data Perusahaan
+
+// Data Mentor
+Route::get('/industri/data-mentor', function () {
+    $page = 'mentor';
+    return view('Frontend.Industri.dataMentor.index', compact('page'));
+})->name('industri-data-mentor');
+Route::get('/industri/add-data-mentor', function () {
+    $page = 'mentor';
+    return view('Frontend.Industri.dataMentor.add', compact('page'));
+})->name('add-industri-data-mentor');
+Route::get('/industri/edit-data-mentor', function () {
+    $page = 'mentor';
+    return view('Frontend.Industri.dataMentor.edit', compact('page'));
+})->name('edit-industri-data-mentor');
+// end Data Mentor
+// end Menu Industri

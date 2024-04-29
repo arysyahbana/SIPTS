@@ -27,12 +27,12 @@
                             value="Jln.awokawokawok">
                     </div>
                     <div class="form-group">
-                        <label for="hp">No Hp</label>
+                        <label for="hp">No Hp Perusahaan</label>
                         <input type="number" class="form-control" placeholder="Masukkan No Hp" name="hp"
                             value="082376458765">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Email Perusahaan</label>
                         <input type="email" class="form-control" placeholder="Masukkan Email" name="email"
                             value="aacom@gmail.com">
                     </div>
@@ -45,6 +45,11 @@
                         <label for="mentor">Mentor</label>
                         <input type="mentor" class="form-control" placeholder="Masukkan Mentor" name="mentor"
                             value="Budi">
+                    </div>
+                    <div class="form-group">
+                        <label for="hp">No Hp Mentor</label>
+                        <input type="number" class="form-control" placeholder="Masukkan No Hp" name="hp"
+                            value="082376458765">
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>

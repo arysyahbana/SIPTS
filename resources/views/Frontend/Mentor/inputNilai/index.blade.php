@@ -23,7 +23,7 @@
                         <tr>
                             <td>1</td>
                             <td>123456</td>
-                            <td>Joni</td>
+                            <td>Jono</td>
                             <td>TKJ</td>
                             <td>
                                 <a href="{{ route('showed-input-nilai') }}" class="btn btn-sm btn-success">Edit</a>
