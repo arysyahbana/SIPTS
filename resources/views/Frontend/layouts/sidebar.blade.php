@@ -45,6 +45,12 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Data Alumni</span></a>
         </li>
+
+        <li class="nav-item {{ $page == 'data-user' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('show-user') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Data User</span></a>
+        </li>
         {{-- end Admin --}}
         {{-- Siswa --}}
     @elseif (Auth::guard()->user()->role == 'Siswa')

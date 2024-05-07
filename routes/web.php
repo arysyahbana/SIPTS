@@ -50,7 +50,7 @@ Route::delete('/delete-pamong/{id}', [PamongController::class, 'delete'])->name(
 // data Siswa
 Route::get('/data-siswa', function () {
     $page = 'data-siswa';
-    $data = Siswa::where('status_murid','Murid')->get();
+    $data = Siswa::where('status_murid', 'Murid')->get();
     return view('Frontend.Admin.dataSiswa.index', compact('page', 'data'));
 })->name('show-siswa')->middleware('auth');
 Route::get('/add-siswa', function () {
@@ -74,7 +74,7 @@ Route::post('/store-siswa', function (Request $request) {
     $siswa->status_murid = 'Murid';
     $siswa->save();
 
-    return redirect()->route('show-siswa')->with('success','Data Berhasil Ditambah');
+    return redirect()->route('show-siswa')->with('success', 'Data Berhasil Ditambah');
 })->name('store-siswa')->middleware('auth');
 
 Route::get('/edit-siswa/{id}', function ($id) {
@@ -98,7 +98,7 @@ Route::post('/update-siswa/{id}', function (Request $request, $id) {
     $siswa->pamong = $data['namaPamong'];
     $siswa->save();
 
-    return redirect()->route('show-siswa')->with('success','Data Berhasil Diupdate');
+    return redirect()->route('show-siswa')->with('success', 'Data Berhasil Diupdate');
 })->name('update-siswa')->middleware('auth');
 Route::get('/delete-siswa/{id}', function ($id) {
     $siswa = Siswa::findOrFail($id);
@@ -133,8 +133,8 @@ Route::get('/edit-industri', function () {
 //data Alumni
 Route::get('/data-alumni', function () {
     $page = 'data-alumni';
-    $data = Siswa::where('status_murid','Alumni')->get();
-    return view('Frontend.Admin.dataAlumni.index', compact('page','data'));
+    $data = Siswa::where('status_murid', 'Alumni')->get();
+    return view('Frontend.Admin.dataAlumni.index', compact('page', 'data'));
 })->name('show-alumni')->middleware('auth');
 Route::get('/add-alumni', function () {
     $page = 'data-alumni';
@@ -144,6 +144,24 @@ Route::get('/edit-alumni', function () {
     $page = 'data-alumni';
     return view('Frontend.Admin.dataAlumni.edit', compact('page'));
 })->name('edit-alumni')->middleware('auth');
+
+// data User
+Route::get('/data-user', function () {
+    $page = 'data-user';
+    return view('Frontend.Admin.dataUser.index', compact('page'));
+})->name('show-user')->middleware('auth');
+
+Route::get('/add-user', function () {
+    $page = 'data-user';
+    return view('Frontend.Admin.dataUser.add', compact('page'));
+})->name('add-user')->middleware('auth');
+
+
+Route::get('/edit-user', function () {
+    $page = 'data-user';
+    return view('Frontend.Admin.dataUser.edit', compact('page'));
+})->name('edit-user')->middleware('auth');
+
 // end Menu Admin
 
 
