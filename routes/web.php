@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\PamongController;
 use App\Http\Controllers\Auth\LoginControler;
 use App\Http\Controllers\Auth\SignupController;
+use App\Models\Siswa;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,21 +42,70 @@ Route::get('/data-pamong', [PamongController::class, 'show'])->name('show-pamong
 Route::get('/add-pamong', [PamongController::class, 'add'])->name('add-pamong');
 Route::post('store-pamong', [PamongController::class, 'store'])->name('store-pamong');
 Route::get('/edit-pamong/{id}', [PamongController::class, 'edit'])->name('edit-pamong');
+Route::put('/update-pamong/{id}', [PamongController::class, 'update'])->name('update-pamong');
+Route::delete('/delete-pamong/{id}', [PamongController::class, 'delete'])->name('delete-pamong');
+
 
 
 // data Siswa
 Route::get('/data-siswa', function () {
     $page = 'data-siswa';
-    return view('Frontend.Admin.dataSiswa.index', compact('page'));
+    $data = Siswa::all();
+    return view('Frontend.Admin.dataSiswa.index', compact('page', 'data'));
 })->name('show-siswa')->middleware('auth');
 Route::get('/add-siswa', function () {
     $page = 'data-siswa';
     return view('Frontend.Admin.dataSiswa.add', compact('page'));
 })->name('add-siswa')->middleware('auth');
-Route::get('/edit-siswa', function () {
+Route::post('/store-siswa', function (Request $request) {
+    $data = $request->all();
+    $siswa = new Siswa();
+    $siswa->nis = $data['nis'];
+    $siswa->nama = $data['name'];
+    $siswa->email = $data['email'];
+    $siswa->no_hp = $data['hp'];
+    $siswa->jenis_kelamin = $data['gender'];
+    $siswa->bidang_keahlian = $data['bidang'];
+    $siswa->program_keahlian = $data['program'];
+    $siswa->konsentrasi_keahlian = $data['konsentrasi'];
+    $siswa->nama_perusahaan = $data['namaPerusahaan'];
+    $siswa->mentor = $data['mentor'];
+    $siswa->pamong = $data['namaPamong'];
+    $siswa->save();
+
+    return redirect()->route('show-siswa')->with('success','Data Berhasil Ditambah');
+})->name('store-siswa')->middleware('auth');
+
+Route::get('/edit-siswa/{id}', function ($id) {
     $page = 'data-siswa';
-    return view('Frontend.Admin.dataSiswa.edit', compact('page'));
+    $data = Siswa::findOrFail($id);
+    return view('Frontend.Admin.dataSiswa.edit', compact('page', 'data'));
 })->name('edit-siswa')->middleware('auth');
+Route::post('/update-siswa/{id}', function (Request $request, $id) {
+    $data = $request->all();
+    $siswa = Siswa::findOrFail($id);
+    $siswa->nis = $data['nis'];
+    $siswa->nama = $data['name'];
+    $siswa->email = $data['email'];
+    $siswa->no_hp = $data['hp'];
+    $siswa->jenis_kelamin = $data['gender'];
+    $siswa->bidang_keahlian = $data['bidang'];
+    $siswa->program_keahlian = $data['program'];
+    $siswa->konsentrasi_keahlian = $data['konsentrasi'];
+    $siswa->nama_perusahaan = $data['namaPerusahaan'];
+    $siswa->mentor = $data['mentor'];
+    $siswa->pamong = $data['namaPamong'];
+    $siswa->save();
+
+    return redirect()->route('show-siswa')->with('success','Data Berhasil Diupdate');
+})->name('update-siswa')->middleware('auth');
+Route::get('/delete-siswa/{id}', function ($id) {
+    $siswa = Siswa::findOrFail($id);
+    $siswa->delete();
+    return redirect()->route('show-siswa')->with('success', 'Data Siswa Berhasil Dihapus');
+})->name('delete-siswa')->middleware('auth');
+
+
 
 //data Industri
 Route::get('/data-industri', function () {

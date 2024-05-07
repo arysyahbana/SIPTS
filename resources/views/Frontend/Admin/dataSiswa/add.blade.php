@@ -9,7 +9,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Add Siswa</h6>
             </div>
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{route('store-siswa')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="NIP">NIS</label>
@@ -31,14 +31,14 @@
                         <label for="name">Jenis Kelamin</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="gender" id="exampleRadios1"
-                                value="option1">
+                                value="Laki-Laki">
                             <label class="form-check-label" for="exampleRadios1">
                                 Laki-laki
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="gender" id="exampleRadios2"
-                                value="option2">
+                                value="Perempuan">
                             <label class="form-check-label" for="exampleRadios2">
                                 Perempuan
                             </label>
@@ -48,30 +48,30 @@
                         <label for="namaSiswa">Bidang Keahlian</label>
                         <select class="form-control" name="bidang">
                             <option>--- Pilih ---</option>
-                            <option value="1">TKJ</option>
-                            <option value="2">DPIB</option>
-                            <option value="3">TKR</option>
-                            <option value="4">TITL</option>
+                            <option value="TKJ" selected>TKJ</option>
+                            <option value="DPIB">DPIB</option>
+                            <option value="TKR">TKR</option>
+                            <option value="TITL">TITL</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="namaSiswa">Program Keahlian</label>
                         <select class="form-control" name="program">
                             <option>--- Pilih ---</option>
-                            <option value="1">TKJ</option>
-                            <option value="2">DPIB</option>
-                            <option value="3">TKR</option>
-                            <option value="4">TITL</option>
+                            <option value="TKJ" selected>TKJ</option>
+                            <option value="DPIB">DPIB</option>
+                            <option value="TKR">TKR</option>
+                            <option value="TITL">TITL</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="namaSiswa">Konsentrasi Keahlian</label>
                         <select class="form-control" name="konsentrasi">
                             <option>--- Pilih ---</option>
-                            <option value="1">TKJ</option>
-                            <option value="2">DPIB</option>
-                            <option value="3">TKR</option>
-                            <option value="4">TITL</option>
+                            <option value="TKJ" selected>TKJ</option>
+                            <option value="DPIB">DPIB</option>
+                            <option value="TKR">TKR</option>
+                            <option value="TITL">TITL</option>
                         </select>
                     </div>
                     <div class="form-group">

@@ -30,23 +30,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($data as $siswa)
                             <tr>
-                                <td>1</td>
-                                <td>121212121</td>
-                                <td>Joni</td>
-                                <td>joni@gmail.com</td>
-                                <td>082354678965</td>
-                                <td>Laki-laki</td>
-                                <td>TKJ</td>
-                                <td>TKJ</td>
-                                <td>TKJ</td>
-                                <td>AACom</td>
-                                <td>Awowok</td>
-                                <td>Awikwok</td>
-                                <td><a href="{{ route('edit-siswa') }}" class="btn btn-sm btn-success">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $siswa->nis }}</td>
+                                <td>{{ $siswa->nama }}</td>
+                                <td>{{ $siswa->email }}</td>
+                                <td>{{ $siswa->no_hp }}</td>
+                                <td>{{ $siswa->jenis_kelamin }}</td>
+                                <td>{{ $siswa->bidang_keahlian }}</td>
+                                <td>{{ $siswa->program_keahlian }}</td>
+                                <td>{{ $siswa->konsentrasi_keahlian }}</td>
+                                <td>{{ $siswa->nama_perusahaan }}</td>
+                                <td>{{ $siswa->mentor }}</td>
+                                <td>{{ $siswa->pamong }}</td>
+                                <td>
+                                    <a href="{{ route('edit-siswa',$siswa->id) }}" class="btn btn-sm btn-success">Edit</a>
+                                    <a href="{{ route('delete-siswa',$siswa->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

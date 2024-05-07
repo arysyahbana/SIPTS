@@ -34,8 +34,10 @@
                     <div class="form-group">
                         <label for="namaSiswa">Nama Siswa</label>
                         <select class="form-control" name="namaSiswa">
-                            <option>--- Pilih ---</option>
-                            <option value="2">Budi</option>
+                            <option selected hidden>--- Pilih ---</option>
+                            @foreach ($data as $siswa)
+                                <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>

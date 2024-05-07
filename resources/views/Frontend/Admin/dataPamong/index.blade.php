@@ -28,11 +28,15 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nip }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->id_siswa }}</td>
-                                    <td>TKJ</td>
+                                    <td>{{ $item->siswa->nama }}</td>
+                                    <td>{{ $item->siswa->bidang_keahlian }}</td>
                                     <td><a href="{{ route('edit-pamong', [$item->id]) }}"
                                             class="btn btn-sm btn-success">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                        <form action="{{ route('delete-pamong', [$item->id]) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
