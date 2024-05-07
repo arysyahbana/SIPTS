@@ -7,7 +7,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Data Alumni</h6>
-                <a href="{{ route('add-alumni') }}" class="btn btn-sm btn-primary">Add</a>
+                {{-- <a href="{{ route('add-alumni') }}" class="btn btn-sm btn-primary">Add</a> --}}
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -24,25 +24,28 @@
                                 <th>Konsentrasi Keahlian</th>
                                 <th>Status Pekerjaan</th>
                                 <th>Tempat</th>
-                                <th>Action</th>
+                                {{-- <th>Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($data as $alumni)
                             <tr>
-                                <td>1</td>
-                                <td>121212121</td>
-                                <td>Joni</td>
-                                <td>2023</td>
-                                <td>Laki-laki</td>
-                                <td>TKJ</td>
-                                <td>TKJ</td>
-                                <td>TKJ</td>
-                                <td>Bekerja</td>
-                                <td>AACom</td>
-                                <td><a href="{{ route('edit-alumni') }}" class="btn btn-sm btn-success">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $alumni->nis }}</td>
+                                <td>{{ $alumni->nama }}</td>
+                                <td>{{ $alumni->tahun_tamat }}</td>
+                                <td>{{ $alumni->jenis_kelamin }}</td>
+                                <td>{{ $alumni->bidang_keahlian }}</td>
+                                <td>{{ $alumni->program_keahlian }}</td>
+                                <td>{{ $alumni->konsentrasi_keahlian }}</td>
+                                <td>{{ $alumni->status_pekerjaan }}</td>
+                                <td>{{ $alumni->tempat }}</td>
+                                {{-- <td>
+                                    <a href="{{ route('edit-alumni', $alumni->id) }}" class="btn btn-sm btn-success">Edit</a>
+                                    <a href="{{ route('delete-alumni', $alumni->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                </td> --}}
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

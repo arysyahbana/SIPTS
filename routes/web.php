@@ -50,7 +50,7 @@ Route::delete('/delete-pamong/{id}', [PamongController::class, 'delete'])->name(
 // data Siswa
 Route::get('/data-siswa', function () {
     $page = 'data-siswa';
-    $data = Siswa::all();
+    $data = Siswa::where('status_murid','Murid')->get();
     return view('Frontend.Admin.dataSiswa.index', compact('page', 'data'));
 })->name('show-siswa')->middleware('auth');
 Route::get('/add-siswa', function () {
@@ -71,6 +71,7 @@ Route::post('/store-siswa', function (Request $request) {
     $siswa->nama_perusahaan = $data['namaPerusahaan'];
     $siswa->mentor = $data['mentor'];
     $siswa->pamong = $data['namaPamong'];
+    $siswa->status_murid = 'Murid';
     $siswa->save();
 
     return redirect()->route('show-siswa')->with('success','Data Berhasil Ditambah');
@@ -104,6 +105,14 @@ Route::get('/delete-siswa/{id}', function ($id) {
     $siswa->delete();
     return redirect()->route('show-siswa')->with('success', 'Data Siswa Berhasil Dihapus');
 })->name('delete-siswa')->middleware('auth');
+Route::get('/alumni-siswa/{id}', function ($id) {
+    $siswa = Siswa::findOrFail($id);
+    $siswa->status_murid = 'Alumni';
+    $siswa->update();
+
+    return redirect()->route('show-siswa')->with('success', 'Status siswa berhasil diubah menjadi Alumni');
+})->name('alumni-siswa')->middleware('auth');
+
 
 
 
@@ -124,7 +133,8 @@ Route::get('/edit-industri', function () {
 //data Alumni
 Route::get('/data-alumni', function () {
     $page = 'data-alumni';
-    return view('Frontend.Admin.dataAlumni.index', compact('page'));
+    $data = Siswa::where('status_murid','Alumni')->get();
+    return view('Frontend.Admin.dataAlumni.index', compact('page','data'));
 })->name('show-alumni')->middleware('auth');
 Route::get('/add-alumni', function () {
     $page = 'data-alumni';

@@ -47,6 +47,7 @@
                                 <td>
                                     <a href="{{ route('edit-siswa',$siswa->id) }}" class="btn btn-sm btn-success">Edit</a>
                                     <a href="{{ route('delete-siswa',$siswa->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ route('alumni-siswa',$siswa->id) }}" class="btn btn-sm btn-info">Alumni</a>
                                 </td>
                             </tr>
                             @endforeach

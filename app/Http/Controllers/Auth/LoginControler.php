@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
-class LoginControler extends Controller
+class  LoginControler extends Controller
 {
     public function show()
     {

@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('nama_perusahaan')->nullable();
             $table->string('mentor')->nullable();
             $table->string('pamong')->nullable();
+            $table->string('status_murid')->nullable();
+            $table->string('status_pekerjaan')->nullable();
+            $table->string('tempat')->nullable();
             $table->timestamps();
         });
     }
