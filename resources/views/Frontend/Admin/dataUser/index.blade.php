@@ -18,24 +18,24 @@
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>HP</th>
-                                <th>Password</th>
                                 <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($data as $user)
                             <tr>
-                                <td>1</td>
-                                <td>Budi</td>
-                                <td>budi@gmail.com</td>
-                                <td>082736477689</td>
-                                <td>akoawkoaowkawkoako</td>
-                                <td>Siswa</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->role }}</td>
                                 <td>
-                                    <a href="{{ route('edit-user') }}" class="btn btn-sm btn-success">Edit</a>
-                                    <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ route('edit-user', $user->id) }}" class="btn btn-sm btn-success">Edit</a>
+                                    <a href="{{ route('delete-user', $user->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

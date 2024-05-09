@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('nip')->nullable();
             $table->string('id_siswa')->nullable();
-            $table->string('hp');
+            $table->string('hp')->nullable();
             $table->string('password');
-            $table->string('role');
+            $table->string('role')->nullable();
             $table->string('bidang')->nullable();
             $table->string('token')->nullable();
             $table->timestamps();

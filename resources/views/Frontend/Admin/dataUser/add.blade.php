@@ -9,10 +9,10 @@
                 <h6 class="m-0 font-weight-bold text-primary">Add User</h6>
             </div>
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{ route('store-user') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="name">NIS</label>
+                        <label for="name">Nama</label>
                         <input type="text" class="form-control" placeholder="Masukkan Nama" name="name">
                     </div>
                     <div class="form-group">
@@ -25,12 +25,10 @@
                     </div>
                     <div class="form-group">
                         <label for="namaSiswa">Role</label>
-                        <select class="form-control" name="bidang">
+                        <select class="form-control" name="role">
                             <option value="" hidden selected>--- Pilih ---</option>
-                            <option value="Siswa">Siswa</option>
                             <option value="Pamong">Pamong</option>
                             <option value="Mentor">Mentor</option>
-                            <option value="Alumni">Alumni</option>
                             <option value="Industri">Industri</option>
                         </select>
                     </div>

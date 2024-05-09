@@ -9,7 +9,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Add Siswa</h6>
             </div>
             <div class="card-body">
-                <form action="{{route('store-siswa')}}" method="POST">
+                <form action="{{ route('store-siswa') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="NIP">NIS</label>
@@ -22,6 +22,10 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" placeholder="Masukkan Email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="Masukkan Password" name="password">
                     </div>
                     <div class="form-group">
                         <label for="hp">No HP</label>

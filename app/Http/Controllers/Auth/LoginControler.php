@@ -36,7 +36,7 @@ class  LoginControler extends Controller
             }
         } else {
             // Auth::guard()->logout();
-            return redirect()->route('home')->with('error', 'User not found');
+            return redirect()->route('home')->with('success', 'User not found');
         }
     }
 

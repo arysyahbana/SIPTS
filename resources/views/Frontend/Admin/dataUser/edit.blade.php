@@ -9,36 +9,35 @@
                 <h6 class="m-0 font-weight-bold text-primary">Edit User</h6>
             </div>
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{ route('update-user', $data->id) }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="name">NIS</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Nama" name="name" value="Budi">
+                        <label for="name">Nama</label>
+                        <input type="text" class="form-control" placeholder="Masukkan Nama" name="name" value="{{ $data->name }}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" placeholder="Masukkan Email" name="email"
-                            value="budi@gmail.com">
+                            value="{{ $data->email }}">
                     </div>
                     <div class="form-group">
                         <label for="hp">No HP</label>
                         <input type="number" class="form-control" placeholder="Masukkan No HP" name="hp"
-                            value="082736477689">
+                            value="{{ $data->hp }}">
                     </div>
                     <div class="form-group">
-                        <label for="namaSiswa">Role</label>
-                        <select class="form-control" name="bidang">
-                            <option value="" hidden selected>--- Pilih ---</option>
-                            <option value="Siswa">Siswa</option>
-                            <option value="Pamong">Pamong</option>
-                            <option value="Mentor">Mentor</option>
-                            <option value="Alumni">Alumni</option>
-                            <option value="Industri">Industri</option>
+                        <label for="role">Role</label>
+                        <select class="form-control" name="role">
+                            <option value="" hidden {{ $data->role ? '' : 'selected' }}>--- Pilih ---</option>
+                            <option value="Admin" {{ $data->role == 'Admin' ? 'selected' : '' }}>Admin</option>
+                            <option value="Pamong" {{ $data->role == 'Pamong' ? 'selected' : '' }}>Pamong</option>
+                            <option value="Mentor" {{ $data->role == 'Mentor' ? 'selected' : '' }}>Mentor</option>
+                            <option value="Industri" {{ $data->role == 'Industri' ? 'selected' : '' }}>Industri</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" placeholder="Masukkan Password" name="password">
+                        <input type="password" class="form-control" placeholder="Masukkan Password Baru" name="password">
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
