@@ -9,7 +9,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Add Mentor</h6>
             </div>
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{route('store-industri-data-mentor')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="name">Nama Mentor</label>
@@ -24,10 +24,16 @@
                         <input type="email" class="form-control" placeholder="Masukkan Email Mentor" name="email">
                     </div>
                     <div class="form-group">
+                        <label for="password">Pasword</label>
+                        <input type="password" class="form-control" placeholder="Masukkan Pasword" name="password">
+                    </div>
+                    <div class="form-group">
                         <label for="namaSiswa">Nama Siswa</label>
                         <select class="form-control" name="namaSiswa">
-                            <option>--- Pilih ---</option>
-                            <option value="2">Budi</option>
+                            <option selected hidden>--- Pilih ---</option>
+                            @foreach ($dataSiswa as $siswa)
+                                <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>

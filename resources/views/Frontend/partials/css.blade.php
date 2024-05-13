@@ -6,4 +6,5 @@
 
 <!-- Custom styles for this template-->
 <link href="{{ asset('dist/css/sb-admin-2.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('dist\vendor\datatables\dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{ asset('dist/css/iziToast.min.css') }}">

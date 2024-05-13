@@ -23,17 +23,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Dadang</td>
-                                <td>082345127689</td>
-                                <td>dadang@gmail.com</td>
-                                <td>Joni</td>
-                                <td><a href="{{ route('edit-industri-data-mentor') }}"
-                                        class="btn btn-sm btn-success">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
+                            @foreach ($data as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item['mentor']->name }}</td>
+                                    <td>{{ $item['mentor']->hp }}</td>
+                                    <td>{{ $item['mentor']->email }}</td>
+                                    <td>{{ $item['siswa']->nama }}</td>
+                                    <td>
+                                        {{-- <a href="{{ route('edit-industri-data-mentor') }}" class="btn btn-sm btn-success">Edit</a> --}}
+                                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
