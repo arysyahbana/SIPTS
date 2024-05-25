@@ -9,29 +9,43 @@
                 <h6 class="m-0 font-weight-bold text-primary">Edit Mentor</h6>
             </div>
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{ route('update-industri-data-mentor', [$dataSiswa->id, $dataMentor->id]) }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="name">Nama Mentor</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Nama Mentor" name="name"
-                            value="Dadang">
+                        <label for="nameMentor">Nama Mentor</label>
+                        <select class="form-control" name="nameMentor" id="nameMentor">
+                            <option hidden>--- Pilih ---</option>
+                            @foreach ($dataMentorAll as $item)
+                                <option value="{{ $item->id_mentor }}"
+                                    {{ $dataMentor->id == $item->id_mentor ? 'selected' : '' }}>
+                                    {{ $item->user->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="hp">Nomor HP</label>
                         <input type="number" class="form-control" placeholder="Masukkan Nomor Hp" name="hp"
-                            value="082345127689">
+                            value="{{ old('hp', $dataMentor->hp ?? '') }}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email Mentor</label>
                         <input type="email" class="form-control" placeholder="Masukkan Email Mentor" name="email"
-                            value="dadang@gmail.com">
+                            value="{{ old('email', $dataMentor->email ?? '') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Pasword</label>
+                        <input type="password" class="form-control" placeholder="Masukkan Pasword" name="password">
                     </div>
                     <div class="form-group">
                         <label for="namaSiswa">Nama Siswa</label>
                         <select class="form-control" name="namaSiswa">
-                            <option>--- Pilih ---</option>
-                            <option value="1">Joni</option>
-                            <option value="2">Budi</option>
+                            <option selected hidden>--- Pilih ---</option>
+                            @foreach ($dataSiswaAll as $siswa)
+                                <option value="{{ $siswa->id }}"
+                                    {{ old('namaSiswa', $dataSiswa->id) == $siswa->id ? 'selected' : '' }}>
+                                    {{ $siswa->nama }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>

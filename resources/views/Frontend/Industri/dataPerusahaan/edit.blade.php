@@ -9,19 +9,19 @@
                 <h6 class="m-0 font-weight-bold text-danger">Edit Perusahaan</h6>
             </div>
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{route('store-industri-data-perusahaan', Auth::user()->id)}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="mou">MOU</label>
                         <input type="text" class="form-control" placeholder="Masukkan MOU" name="mou"
-                            value="Awokwo123">
+                            value="{{$industri->mou ?? ''}}">
                     </div>
                     <div class="form-group">
                         <label for="name">Nama Perusahaan</label>
                         <input type="text" class="form-control" placeholder="Masukkan Nama Perusahaan" name="name"
-                            value="AACom">
+                            value="{{$industri->nama_perusahaan ?? ''}}">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <p>Foto Sebelumnya</p>
                         <img src="{{ asset('dist/img/undraw_profile.svg') }}" alt="" class="img-fluid"
                             style="max-width: 10rem">
@@ -38,21 +38,21 @@
                                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
                         <input type="text" class="form-control" placeholder="Masukkan Nama Perusahaan" name="alamat"
-                            value="Jln. Bukittinggi-Padang">
+                            value="{{$industri->alamat ?? ''}}">
                     </div>
                     <div class="form-group">
                         <label for="hp">No HP Perusahaan</label>
                         <input type="number" class="form-control" placeholder="Masukkan No HP Perusahaan" name="hp"
-                            value="082365748945">
+                            value="{{$industri->np_hp ?? ''}}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email Perusahaan</label>
                         <input type="email" class="form-control" placeholder="Masukkan Email Perusahaan" name="email"
-                            value="aacom@gmail.com">
+                            value="{{$industri->email ?? ''}}">
                     </div>
                     <button type="submit" class="btn btn-danger">Update</button>
                 </form>

@@ -26,13 +26,13 @@
                             @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item['mentor']->name }}</td>
-                                    <td>{{ $item['mentor']->hp }}</td>
-                                    <td>{{ $item['mentor']->email }}</td>
-                                    <td>{{ $item['siswa']->nama }}</td>
+                                    <td>{{ $item['user']->name }}</td>
+                                    <td>{{ $item['user']->hp }}</td>
+                                    <td>{{ $item['user']->email }}</td>
+                                    <td>{{ $item['siswa']->nama ?? '' }}</td>
                                     <td>
-                                        {{-- <a href="{{ route('edit-industri-data-mentor') }}" class="btn btn-sm btn-success">Edit</a> --}}
-                                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="{{ route('edit-industri-data-mentor', [$item['siswa']->id, $item['user']->id]) }}" class="btn btn-sm btn-success">Edit</a>
+                                        <a href="{{ route('delete-industri-data-mentor', $item['mentor']->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

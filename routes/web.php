@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\PamongController;
 use App\Http\Controllers\Auth\LoginControler;
 use App\Http\Controllers\Auth\SignupController;
+use App\Models\Industri;
 use App\Models\Mentor;
 use App\Models\Siswa;
 use App\Models\User;
@@ -140,7 +141,8 @@ Route::get('/alumni-siswa/{id}', function ($id) {
 //data Industri
 Route::get('/data-industri', function () {
     $page = 'data-industri';
-    return view('Frontend.Admin.dataIndustri.index', compact('page'));
+    $data = Mentor::with(['siswa','industri','user'])->get();
+    return view('Frontend.Admin.dataIndustri.index', compact('page','data'));
 })
     ->name('show-industri')
     ->middleware('auth');
@@ -223,7 +225,7 @@ Route::post('/update-user/{id}', function (Request $request, $id) {
     $user->password = Hash::make($data['password']);
     $user->role = $data['role'];
     $user->hp = $data['hp'];
-    $user->save();
+    $user->update();
 
     return redirect()->route('show-user')->with('success', 'User berhasil diperbarui');
 })
@@ -350,50 +352,72 @@ Route::get('/mentor/data-siswa/input-nilai', function () {
 // Data Perusahaan
 Route::get('/industri/data-perusahaan', function () {
     $page = 'perusahaan';
-    return view('Frontend.Industri.dataPerusahaan.index', compact('page'));
+    $industri = Industri::where('id_industri', Auth::user()->id)->first();
+    return view('Frontend.Industri.dataPerusahaan.index', compact('page','industri'));
 })->name('industri-data-perusahaan');
-Route::get('/industri/edit-data-perusahaan', function () {
+Route::get('/industri/edit-data-perusahaan/{id}', function () {
     $page = 'perusahaan';
-    return view('Frontend.Industri.dataPerusahaan.edit', compact('page'));
+    $industri = Industri::where('id_industri', Auth::user()->id)->first();
+    return view('Frontend.Industri.dataPerusahaan.edit', compact('page', 'industri'));
 })->name('edit-industri-data-perusahaan');
+
+Route::post('/industri/store-data-perusahaan/{id}', function (Request $request, $id) {
+    $industri = new Industri();
+    $data = $request->all();
+    $industri->id_industri = Auth::user()->id;
+    $industri->mou = $data['mou'];
+    $industri->nama_perusahaan = $data['name'];
+    $industri->alamat = $data['alamat'];
+    $industri->np_hp = $data['hp'];
+    $industri->email = $data['email'];
+    $industri->save();
+    return redirect()->route('industri-data-perusahaan')->with('success','data berhasil diupdate');
+})->name('store-industri-data-perusahaan');
 // end Data Perusahaan
 
 // Data Mentor
 Route::get('/industri/data-mentor', function () {
     $page = 'mentor';
-    // $dataUser = Mentor::where('id_industri', Auth::user()->id)->get();
-    // foreach ($dataUser as $item) {
-    //     $dataMentor = User::where('id', $item->id_mentor)->first();
-    //     $dataSiswa = Siswa::where('id', $item->id_siswa)->first();
-    // }
-    // dd($item);die;
     $dataUser = Mentor::where('id_industri', Auth::user()->id)->get();
     $data = [];
 
     foreach ($dataUser as $item) {
-        $dataMentor = User::where('id', $item->id_mentor)->first();
+        $dataUser = User::where('id', $item->id_mentor)->first();
         $dataSiswa = Siswa::where('id', $item->id_siswa)->first();
-
+        $dataMentor = Mentor::where('id', $item->id)->first();
         $data[] = [
+            'user' => $dataUser,
             'mentor' => $dataMentor,
             'siswa' => $dataSiswa,
         ];
     }
+    // dd($data);die;
     return view('Frontend.Industri.dataMentor.index', compact('page', 'data'));
 })->name('industri-data-mentor');
 Route::get('/industri/add-data-mentor', function () {
     $page = 'mentor';
     $dataSiswa = Siswa::all();
-    return view('Frontend.Industri.dataMentor.add', compact('page', 'dataSiswa'));
+    $data = Mentor::where('id_industri', Auth::user()->id)->get();
+    foreach ($data as $item) {
+        $dataMentor[] = User::where('id', $item->id_mentor)->first();
+    }
+    // dd($dataMentor);die;
+    return view('Frontend.Industri.dataMentor.add', compact('page', 'dataSiswa', 'dataMentor'));
 })->name('add-industri-data-mentor');
+
 Route::post('/industri/store-data-mentor', function (Request $request) {
-    $mentor = new User();
-    $mentor->name = $request->name;
-    $mentor->email = $request->email;
-    $mentor->hp = $request->hp;
-    $mentor->id_siswa = $request->namaSiswa;
-    $mentor->password = Hash::make($request->password);
-    $mentor->save();
+    if ($request->name2 == null) {
+        $mentor = new User();
+        $mentor->name = $request->name;
+        $mentor->email = $request->email;
+        $mentor->hp = $request->hp;
+        $mentor->role = 'Mentor';
+        $mentor->id_siswa = $request->namaSiswa;
+        $mentor->password = Hash::make($request->password);
+        $mentor->save();
+    } else {
+        $mentor = User::findOrFail($request->name2);
+    }
 
     $dataMentor = new Mentor();
     $dataMentor->id_mentor = $mentor->id;
@@ -404,9 +428,38 @@ Route::post('/industri/store-data-mentor', function (Request $request) {
     return redirect('/industri/data-mentor')->with('success', 'Data mentor berhasil disimpan.');
 })->name('store-industri-data-mentor');
 
-Route::get('/industri/edit-data-mentor', function () {
+Route::get('/industri/edit-data-mentor/{id1}/{id2}', function ($id1, $id2) {
     $page = 'mentor';
-    return view('Frontend.Industri.dataMentor.edit', compact('page'));
+    $dataSiswa = Siswa::findOrFail($id1);
+    $dataMentor = User::findOrFail($id2);
+    $dataMentorAll = Mentor::with('user')
+        ->where('id_industri', Auth::user()->id)
+        ->get();
+    $dataSiswaAll = Siswa::with('user')->get();
+    // dd($dataMentorAll);die;
+    return view('Frontend.Industri.dataMentor.edit', compact('page', 'dataSiswa', 'dataMentor', 'dataMentorAll', 'dataSiswaAll'));
 })->name('edit-industri-data-mentor');
+
+Route::post('/industri/update-data-mentor/{id1}/{id2}', function (Request $request, $id1, $id2) {
+    $dataMentorAll = Mentor::with('user')->where('id_siswa', $id1)->where('id_mentor', $id2)->first();
+    $dataMentorAll->id_mentor = $request->input('nameMentor');
+    $dataMentorAll->id_siswa = $request->input('namaSiswa');
+    $dataMentorAll->update();
+    $dataMentor = User::findOrFail($id2);
+    $dataMentor->hp = $request->input('hp');
+    $dataMentor->email = $request->input('email');
+    if ($request->filled('password')) {
+        $dataMentor->password = Hash::make($request->input('password'));
+    }
+    $dataMentor->update();
+    return redirect('/industri/data-mentor')->with('success', 'Data mentor berhasil diperbarui.');
+})->name('update-industri-data-mentor');
+
+Route::get('/industri/delete-data-mentor/{id}', function ($id) {
+    $mentor = Mentor::findOrFail($id);
+    $mentor->delete();
+    return redirect('/industri/data-mentor')->with('success', 'Data mentor berhasil dihapus.');
+})->name('delete-industri-data-mentor');
+
 // end Data Mentor
 // end Menu Industri

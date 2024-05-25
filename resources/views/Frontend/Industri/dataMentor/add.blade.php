@@ -47,32 +47,32 @@
                 </div>
 
                 <div id="form-existing-Mentor">
-                    <form action="#" method="POST">
+                    <form action="{{ route('store-industri-data-mentor') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="name2">Nama Mentor</label>
                             <select class="form-control" name="name2">
                                 <option selected hidden>--- Pilih ---</option>
-                                {{-- @foreach ($dataSiswa as $siswa)
-                                    <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
-                                @endforeach --}}
+                                @foreach ($dataMentor as $mentor)
+                                    <option value="{{ $mentor->id }}">{{ $mentor->name }}</option>
+                                @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="hp2">Nomor HP</label>
-                            <input type="number" class="form-control" placeholder="Masukkan Nomor Hp" name="hp2">
+                            <input type="number" class="form-control" placeholder="Masukkan Nomor Hp" name="hp">
                         </div>
                         <div class="form-group">
                             <label for="email2">Email Mentor</label>
-                            <input type="email" class="form-control" placeholder="Masukkan Email Mentor" name="email2">
+                            <input type="email" class="form-control" placeholder="Masukkan Email Mentor" name="email">
                         </div>
                         <div class="form-group">
                             <label for="password2">Pasword</label>
-                            <input type="password" class="form-control" placeholder="Masukkan Pasword" name="password2">
-                        </div>
+                            <input type="password" class="form-control" placeholder="Masukkan Pasword" name="password">
+                        </div> --}}
                         <div class="form-group">
-                            <label for="namaSisw2a">Nama Siswa</label>
-                            <select class="form-control" name="namaSiswa2">
+                            <label for="namaSiswa">Nama Siswa</label>
+                            <select class="form-control" name="namaSiswa">
                                 <option selected hidden>--- Pilih ---</option>
                                 @foreach ($dataSiswa as $siswa)
                                     <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>

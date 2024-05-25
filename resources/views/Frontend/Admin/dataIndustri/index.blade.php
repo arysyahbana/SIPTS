@@ -7,7 +7,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Data Industri</h6>
-                <a href="{{ route('add-industri') }}" class="btn btn-sm btn-primary">Add</a>
+                {{-- <a href="{{ route('add-industri') }}" class="btn btn-sm btn-primary">Add</a> --}}
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -23,24 +23,26 @@
                                 <th>Nama Siswa</th>
                                 <th>Mentor</th>
                                 <th>No HP Mentor</th>
-                                <th>Action</th>
+                                {{-- <th>Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>121212121</td>
-                                <td>AACom</td>
-                                <td>Jln.awokawokawok</td>
-                                <td>082376458765</td>
-                                <td>aacom@gmail.com</td>
-                                <td>Joni</td>
-                                <td>Budi</td>
-                                <td>082376458765</td>
-                                <td><a href="{{ route('edit-industri') }}" class="btn btn-sm btn-success">Edit</a>
+                            @foreach ($data as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->industri->mou ?? '' }}</td>
+                                    <td>{{ $item->industri->nama_perusahaan ?? '' }}</td>
+                                    <td>{{ $item->industri->alamat ?? '' }}</td>
+                                    <td>{{ $item->industri->np_hp ?? '' }}</td>
+                                    <td>{{ $item->industri->email ?? '' }}/td>
+                                    <td>{{ $item->siswa->nama ?? '' }}</td>
+                                    <td>{{ $item->user->name ?? '' }}</td>
+                                    <td>{{ $item->user->hp ?? '' }}</td>
+                                    {{-- <td><a href="{{ route('edit-industri') }}" class="btn btn-sm btn-success">Edit</a>
                                     <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
+                                </td> --}}
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

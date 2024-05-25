@@ -11,7 +11,7 @@
                     <div class="card-header bg-danger text-white" style="max-height: 6rem">
                         <div class="row">
                             <div class="col col-6 col-lg-4">
-                                <h4 class="font-weight-bold">AACom</h4>
+                                <h4 class="font-weight-bold">{{ $industri->nama_perusahaan ?? '' }}</h4>
                                 <p>Industri</p>
                             </div>
                             <div class="col col-6 col-lg-4 text-center pt-4">
@@ -28,7 +28,7 @@
                                 <div class="col col-6 col-lg-4">
                                     MOU </div>
                                 <div class="col-col-6 px-3">
-                                    Awokwo123
+                                    {{ $industri->mou ?? '' }}
                                 </div>
                             </div>
                             </p>
@@ -38,7 +38,7 @@
                                 <div class="col col-6 col-lg-4">
                                     Nama Perusahaan </div>
                                 <div class="col-col-6 px-3">
-                                    AACom
+                                    {{ $industri->nama_perusahaan ?? '' }}
                                 </div>
                             </div>
                             </p>
@@ -47,7 +47,8 @@
                                 <div class="col col-6 col-lg-4">
                                     Alamat
                                 </div>
-                                <div class="col col-6">Jln. Bukittinggi-Padang
+                                <div class="col col-6">
+                                    {{ $industri->alamat ?? '' }}
                                 </div>
                             </div>
                             </p>
@@ -55,7 +56,8 @@
                                 <div class="col col-6 col-lg-4">
                                     No HP Perusahaan
                                 </div>
-                                <div class="col col-6">082365748945
+                                <div class="col col-6">
+                                    {{ $industri->np_hp ?? '' }}
                                 </div>
                             </div>
                             </p>
@@ -63,13 +65,14 @@
                                 <div class="col col-6 col-lg-4">
                                     Email Perusahaan
                                 </div>
-                                <div class="col col-6">aacom@gmail.com
+                                <div class="col col-6">
+                                    {{ $industri->email ?? '' }}
                                 </div>
                             </div>
                             </p>
                         </div>
                         <div class="d-flex justify-content-center mt-5">
-                            <a href="{{ route('edit-industri-data-perusahaan') }}"
+                            <a href="{{ route('edit-industri-data-perusahaan', Auth::user()->id) }}"
                                 class="btn btn-danger rounded-pill form-control col-6">Edit Data Perusahaan</a>
                         </div>
                     </div>

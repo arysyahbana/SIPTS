@@ -37,7 +37,7 @@
         <li class="nav-item {{ $page == 'data-industri' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('show-industri') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Data Insudtri</span></a>
+                <span>Data Industri</span></a>
         </li>
 
         <li class="nav-item {{ $page == 'data-alumni' ? 'active' : '' }}">
