@@ -60,13 +60,13 @@
                                             </button>
                                         </div>
                                     </form>
-                                    <div class="pt-1 mb-4 text-start">
+                                    {{-- <div class="pt-1 mb-4 text-start">
                                         <a href="{{ route('signup') }}"
                                             class="btn btn-secondary btn-block form-control rounded-pill"
                                             type="submit">
                                             Sign Up
                                         </a>
-                                    </div>
+                                    </div> --}}
                                     <div class="pt-1 mb-4 text-end">
                                         <a href="{{ route('forget') }}" class="text-danger text-decoration-none"
                                             type="submit">
