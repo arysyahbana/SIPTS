@@ -31,7 +31,7 @@
                             <option value="" hidden {{ $data->role ? '' : 'selected' }}>--- Pilih ---</option>
                             <option value="Admin" {{ $data->role == 'Admin' ? 'selected' : '' }}>Admin</option>
                             <option value="Pamong" {{ $data->role == 'Pamong' ? 'selected' : '' }}>Pamong</option>
-                            <option value="Mentor" {{ $data->role == 'Mentor' ? 'selected' : '' }}>Mentor</option>
+                            {{-- <option value="Mentor" {{ $data->role == 'Mentor' ? 'selected' : '' }}>Mentor</option> --}}
                             <option value="Industri" {{ $data->role == 'Industri' ? 'selected' : '' }}>Industri</option>
                         </select>
                     </div>

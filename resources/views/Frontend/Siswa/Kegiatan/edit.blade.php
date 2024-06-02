@@ -9,29 +9,29 @@
                 <h6 class="m-0 font-weight-bold text-danger">Edit Kegiatan</h6>
             </div>
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{ route('update-kegiatan',$edit->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="tanggal">Tanggal</label>
-                        <input type="datetime-local" class="form-control" placeholder="Masukkan Waktu" name="tanggal">
+                        <input type="datetime-local" class="form-control" placeholder="Masukkan Waktu" name="tanggal" value="{{$edit->tanggal}}">
                     </div>
                     <div class="form-group">
                         <label for="judul">Judul</label>
                         <input type="text" class="form-control" placeholder="Masukkan Judul Kegiatan" name="judul"
-                            value="Memasang Kabel">
+                            value="{{$edit->judul}}">
                     </div>
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>
                         <textarea name="deskripsi" id="" cols="30" rows="5" class="form-control"
-                            placeholder="Masukan Deskripsi">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus sapiente aspernatur qui provident quibusdam dolores maiores enim unde eveniet eum?</textarea>
+                            placeholder="Masukan Deskripsi">{{$edit->deskripsi}}</textarea>
                     </div>
                     <div class="form-group">
                         <p>Foto Sebelumnya</p>
-                        <img src="{{ asset('dist/img/undraw_profile.svg') }}" alt="" class="img-fluid"
+                        <img src="{{ asset('uploads/kegiatan/' . Auth::user()->name . '/' . $edit->foto) }}" alt="" class="img-fluid"
                             style="max-width: 10rem">
                     </div>
                     <div class="form-group">
-                        <label for="foto">Update Foto Kegiatan</label>
+                        <label for="foto">Foto Kegiatan</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>

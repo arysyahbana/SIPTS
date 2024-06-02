@@ -9,23 +9,23 @@
                 <h6 class="m-0 font-weight-bold text-danger">Upload Kegiatan</h6>
             </div>
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{ route('store-kegiatan') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="kehadiran">Kehadiran</label> <br>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                value="option1">
+                            <input class="form-check-input" type="radio" name="kehadiran" id="inlineRadio1"
+                                value="Hadir" checked>
                             <label class="form-check-label" for="inlineRadio1">Hadir</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                value="option2">
+                            <input class="form-check-input" type="radio" name="kehadiran" id="inlineRadio2"
+                                value="Sakit">
                             <label class="form-check-label" for="inlineRadio2">Sakit</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                                value="option3">
+                            <input class="form-check-input" type="radio" name="kehadiran" id="inlineRadio3"
+                                value="Izin">
                             <label class="form-check-label" for="inlineRadio3">Izin</label>
                         </div>
                     </div>

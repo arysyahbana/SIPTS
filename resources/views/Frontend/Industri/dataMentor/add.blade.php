@@ -53,23 +53,11 @@
                             <label for="name2">Nama Mentor</label>
                             <select class="form-control" name="name2">
                                 <option selected hidden>--- Pilih ---</option>
-                                @foreach ($dataMentor as $mentor)
-                                    <option value="{{ $mentor->id }}">{{ $mentor->name }}</option>
+                                @foreach ($data as $mentor)
+                                    <option value="{{ $mentor->user->id }}">{{ $mentor->user->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="hp2">Nomor HP</label>
-                            <input type="number" class="form-control" placeholder="Masukkan Nomor Hp" name="hp">
-                        </div>
-                        <div class="form-group">
-                            <label for="email2">Email Mentor</label>
-                            <input type="email" class="form-control" placeholder="Masukkan Email Mentor" name="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="password2">Pasword</label>
-                            <input type="password" class="form-control" placeholder="Masukkan Pasword" name="password">
-                        </div> --}}
                         <div class="form-group">
                             <label for="namaSiswa">Nama Siswa</label>
                             <select class="form-control" name="namaSiswa">

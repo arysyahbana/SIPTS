@@ -27,8 +27,9 @@
                         <label for="namaSiswa">Role</label>
                         <select class="form-control" name="role">
                             <option value="" hidden selected>--- Pilih ---</option>
+                            <option value="Admin">Admin</option>
                             <option value="Pamong">Pamong</option>
-                            <option value="Mentor">Mentor</option>
+                            {{-- <option value="Mentor">Mentor</option> --}}
                             <option value="Industri">Industri</option>
                         </select>
                     </div>

@@ -10,24 +10,26 @@
                 <h6 class="m-0 font-weight-bold text-danger">Update Profile</h6>
             </div>
             <div class="card-body text-dark">
-                <form>
+                <form action="{{ route('update-profile-siswa2', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
                         <label for="name">Nama</label>
-                        <input type="text" class="form-control" id="name" placeholder="Nama"
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nama"
                             value="{{ Auth::user()->name }}">
                     </div>
                     <div class="form-group">
                         <label for="nis">NIS</label>
-                        <input type="text" class="form-control" id="nis" placeholder="NIS">
+                        <input type="text" class="form-control" id="nis" name="nis" placeholder="NIS"
+                            value="{{ $siswa->nis }}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email"
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email"
                             value="{{ Auth::user()->email }}">
                     </div>
                     <div class="form-group">
                         <label for="email">No HP</label>
-                        <input type="email" class="form-control" id="email" placeholder="No HP"
+                        <input type="text" class="form-control" id="email" name="hp" placeholder="No HP"
                             value="{{ Auth::user()->hp }}">
                     </div>
                     <div class="form-group">

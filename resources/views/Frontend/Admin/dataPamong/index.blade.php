@@ -26,8 +26,8 @@
                             @foreach ($user as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->nip }}</td>
-                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->user->nip }}</td>
+                                    <td>{{ $item->user->name }}</td>
                                     <td>{{ $item->siswa->nama }}</td>
                                     <td>{{ $item->siswa->bidang_keahlian }}</td>
                                     <td><a href="{{ route('edit-pamong', [$item->id]) }}"

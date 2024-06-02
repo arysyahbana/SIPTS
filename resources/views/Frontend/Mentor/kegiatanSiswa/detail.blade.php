@@ -11,9 +11,9 @@
             <div class="card-body text-dark">
                 <div class="row">
                     <div class="col col-3 col-lg-1 mb-2">Nama Siswa</div>
-                    <div class="col col-9 col-lg-11 mb-2">Joni</div>
+                    <div class="col col-9 col-lg-11 mb-2">{{ $siswa->nama }}</div>
                     <div class="col col-3 col-lg-1 mb-3">Bidang Studi</div>
-                    <div class="col col-9 col-lg-11 mb-3">TJKT</div>
+                    <div class="col col-9 col-lg-11 mb-3">{{ $siswa->bidang_keahlian }}</div>
                 </div>
                 <table class="table table-bordered text-dark" width="100%" cellspacing="0">
                     <thead>
@@ -26,14 +26,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>20 April 2024</td>
-                            <td>Memasang Kabel</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing.</td>
-                            <td><img src="{{ asset('dist/img/undraw_profile.svg') }}" alt="" class="img-fluid w-25">
-                            </td>
-                        </tr>
+                        @foreach ($kegiatan as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->tanggal }}</td>
+                                <td>{{ $item->judul }}</td>
+                                <td>{{ $item->deskripsi }}</td>
+                                <td class="text-center"><img
+                                        src="{{ asset('uploads/kegiatan/' . $item->siswa->nama . '/' . $item->foto) }}"
+                                        alt="" class="img-fluid" style="max-width: 200px">
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

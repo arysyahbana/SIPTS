@@ -9,28 +9,28 @@
                 <h6 class="m-0 font-weight-bold text-primary">Edit Pamong</h6>
             </div>
             <div class="card-body">
-                <form action="{{ route('update-pamong', $user->id) }}" method="POST">
+                <form action="{{ route('update-pamong', $user->user->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="NIP">NIP</label>
                         <input type="number" class="form-control" placeholder="Masukkan NIP" name="nip"
-                            value="{{ $user->nip }}">
+                            value="{{ $user->user->nip }}">
                     </div>
                     <div class="form-group">
                         <label for="name">Nama Pamong</label>
                         <input type="text" class="form-control" placeholder="Masukkan Nama Pamong" name="name"
-                            value="{{ $user->name }}">
+                            value="{{ $user->user->name }}">
                     </div>
                     <div class="form-group">
                         <label for="hp">Nomor HP</label>
                         <input type="number" class="form-control" placeholder="Masukkan Nomor Hp" name="hp"
-                            value="{{ $user->hp }}">
+                            value="{{ $user->user->hp }}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email Pamong</label>
                         <input type="email" class="form-control" placeholder="Masukkan Email Pamong" name="email"
-                            value="{{ $user->email }}">
+                            value="{{ $user->user->email }}">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -39,6 +39,7 @@
                     <div class="form-group">
                         <label for="namaSiswa">Nama Siswa</label>
                         <select class="form-control" name="namaSiswa">
+                            <option value="" selected hidden>Pilih</option>
                             @foreach ($siswa as $item)
                             <option value="{{ $item->id }}" {{ $item->id == $user->siswa->id ? 'selected' : '' }}>{{ $item->nama }}</option>
                             @endforeach

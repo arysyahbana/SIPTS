@@ -20,16 +20,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>123456</td>
-                            <td>Jono</td>
-                            <td>TKJ</td>
-                            <td>
-                                <a href="{{ route('showed-input-nilai') }}" class="btn btn-sm btn-success">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                            </td>
-                        </tr>
+                        @foreach ($dataMentor as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->siswa->nis }}</td>
+                                <td>{{ $item->siswa->nama }}</td>
+                                <td>{{ $item->siswa->bidang_keahlian }}</td>
+                                <td>
+                                    <a href="{{ route('mentor-showed-input-nilai', [$item->siswa->id, $item->id_mentor]) }}"
+                                        class="btn btn-sm btn-danger">Lihat</a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

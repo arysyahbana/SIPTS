@@ -165,6 +165,20 @@
             <h3 class="font-weight-bold text-dark text-center">Sistem Informasi Praktek Kerja Lapangan dan Tracer Study
                 Mentor</h3>
         @elseif (Auth::user()->role == 'Siswa')
+            @php
+                $mentor = App\Models\Mentor::where('id_siswa', Auth::user()->id_siswa)->first();
+                if ($mentor === null) {
+                    $mentor = '';
+                    $industri = '';
+                    $dataMentor = '';
+                    $pamong = '';
+                } else {
+                    $industri = App\Models\Industri::where('id_industri', $mentor->id_industri)->first();
+                    $dataMentor = App\Models\User::find($mentor->id_mentor);
+                    $pamong = App\Models\Pamong::where('id_siswa', Auth::user()->id_siswa)->first();
+                }
+                $fotoSiswa = App\Models\Siswa::where('email', Auth::user()->email)->first();
+            @endphp
             <h3 class="font-weight-bold text-dark text-center">Sistem Informasi Praktek Kerja Lapangan dan Tracer Study
                 Siswa</h3>
             <div class="row container mx-auto mt-5">
@@ -179,8 +193,12 @@
                                     <p>{{ Auth::user()->role }}</p>
                                 </div>
                                 <div class="col col-6 col-lg-4 text-center pt-4">
-                                    <img src="{{ asset('dist/img/undraw_profile_1.svg') }}" alt=""
-                                        class="img-fluid rounded-pill shadow" style="width: 6rem;">
+                                    <div class="rounded-pill shadow border mx-auto"
+                                        style="width: 6rem; height: 6rem; overflow: hidden;">
+                                        <img src="{{ $fotoSiswa == null ? asset('dist/img/undraw_profile_1.svg') : asset('uploads/foto/' . $fotoSiswa->foto) }}"
+                                            alt="" class="img-fluid"
+                                            style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +210,7 @@
                                     <div class="col col-3">
                                         Nama </div>
                                     <div class="col-col-6 px-3">
-                                        {{ Auth::user()->name }}
+                                        {{ $fotoSiswa->nama }}
                                     </div>
                                 </div>
                                 </p>
@@ -201,7 +219,7 @@
                                     <div class="col col-3">
                                         NIS
                                     </div>
-                                    <div class="col col-6">121221
+                                    <div class="col col-6">{{ $fotoSiswa->nis ?? '' }}
                                     </div>
                                 </div>
                                 </p>
@@ -210,7 +228,7 @@
                                     <div class="col col-3">
                                         Email
                                     </div>
-                                    <div class="col col-6">{{ Auth::user()->email }}
+                                    <div class="col col-6">{{ $fotoSiswa->email }}
                                     </div>
                                 </div>
                                 <p>
@@ -218,7 +236,7 @@
                                     <div class="col col-3">
                                         No HP
                                     </div>
-                                    <div class="col col-6">{{ Auth::user()->hp }}
+                                    <div class="col col-6">{{ $fotoSiswa->no_hp }}
                                     </div>
                                 </div>
                                 </p>
@@ -236,13 +254,13 @@
                         <div class="card-header bg-danger text-white" style="max-height: 6rem">
                             <div class="row">
                                 <div class="col col-6 col-lg-4">
-                                    <h4 class="font-weight-bold">AACom</h4>
+                                    <h4 class="font-weight-bold">{{ $industri->nama_perusahaan ?? '' }}</h4>
                                     <p>Industri</p>
                                 </div>
-                                <div class="col col-6 col-lg-4 text-center pt-4">
+                                {{-- <div class="col col-6 col-lg-4 text-center pt-4">
                                     <img src="{{ asset('dist/img/undraw_profile_3.svg') }}" alt=""
                                         class="img-fluid rounded-pill shadow" style="width: 6rem;">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="card-body mt-5 text-dark">
@@ -253,7 +271,7 @@
                                     <div class="col col-6 col-lg-4">
                                         Nama Perusahaan </div>
                                     <div class="col-col-6 px-3">
-                                        AACom
+                                        {{ $industri->nama_perusahaan ?? '' }}
                                     </div>
                                 </div>
                                 </p>
@@ -262,7 +280,7 @@
                                     <div class="col col-6 col-lg-4">
                                         Alamat
                                     </div>
-                                    <div class="col col-6">Jln. Bukittinggi-Padang
+                                    <div class="col col-6">{{ $industri->alamat ?? '' }}
                                     </div>
                                 </div>
                                 </p>
@@ -271,7 +289,7 @@
                                     <div class="col col-6 col-lg-4">
                                         Mentor
                                     </div>
-                                    <div class="col col-6">Danu
+                                    <div class="col col-6">{{ $dataMentor->name ?? '' }}
                                     </div>
                                 </div>
                                 <p>
@@ -279,7 +297,7 @@
                                     <div class="col col-6 col-lg-4">
                                         No HP Mentor
                                     </div>
-                                    <div class="col col-6">082365748945
+                                    <div class="col col-6">{{ $dataMentor->hp ?? '' }}
                                     </div>
                                 </div>
                                 </p>
@@ -288,7 +306,7 @@
                                     <div class="col col-6 col-lg-4">
                                         Pamong
                                     </div>
-                                    <div class="col col-6">Dadang
+                                    <div class="col col-6">{{ $pamong->user->name ?? '' }}
                                     </div>
                                 </div>
                                 </p>
@@ -297,7 +315,7 @@
                                     <div class="col col-6 col-lg-4">
                                         No HP Pamong
                                     </div>
-                                    <div class="col col-6">082365748923
+                                    <div class="col col-6">{{ $pamong->user->hp ?? '' }}
                                     </div>
                                 </div>
                                 </p>
@@ -307,6 +325,9 @@
                 </div>
             </div>
         @elseif (Auth::user()->role == 'Alumni')
+            @php
+                $siswa = App\Models\Siswa::where('email', Auth::user()->email)->first();
+            @endphp
             <h3 class="font-weight-bold text-dark text-center">Sistem Informasi Praktek Kerja Lapangan dan Tracer Study
             </h3>
             <div class="row container mx-auto mt-5 justify-content-center">
@@ -334,7 +355,7 @@
                                     <div class="col col-3">
                                         Nama </div>
                                     <div class="col-col-6 px-3">
-                                        {{ Auth::user()->name }}
+                                        {{$siswa->nama }}
                                     </div>
                                 </div>
                                 </p>
@@ -343,7 +364,7 @@
                                     <div class="col col-3">
                                         NIS
                                     </div>
-                                    <div class="col col-6">121221
+                                    <div class="col col-6">{{ $siswa->nis ?? '' }}
                                     </div>
                                 </div>
                                 </p>
@@ -352,7 +373,7 @@
                                     <div class="col col-3">
                                         Email
                                     </div>
-                                    <div class="col col-6">{{ Auth::user()->email }}
+                                    <div class="col col-6">{{$siswa->email }}
                                     </div>
                                 </div>
                                 <p>
@@ -360,12 +381,12 @@
                                     <div class="col col-3">
                                         No HP
                                     </div>
-                                    <div class="col col-6">{{ Auth::user()->hp }}
+                                    <div class="col col-6">{{$siswa->no_hp }}
                                     </div>
                                 </div>
                                 </p>
                             </div>
-                            <a href="{{ route('update-profile-alumni') }}"
+                            <a href="{{ route('edit-profile-alumni') }}"
                                 class="btn btn-danger rounded-pill form-control">Update Profile</a>
                         </div>
                     </div>

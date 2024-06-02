@@ -93,11 +93,11 @@
                     <span>Cek Kegiatan Siswa</span></a>
             </li>
 
-            <li class="nav-item {{ $page == 'input-nilai' ? 'active' : '' }}">
+            {{-- <li class="nav-item {{ $page == 'input-nilai' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('show-input-nilai') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Input Nilai</span></a>
-            </li>
+            </li> --}}
         </div>
         {{-- end Pamong --}}
         {{-- Mentor --}}

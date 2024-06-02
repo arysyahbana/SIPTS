@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Siswa::class, 'id_siswa');
     }
+
+    public function industriSiswa(){
+        return $this->belongsTo(Mentor::class, 'id','id_siswa');
+    }
 }

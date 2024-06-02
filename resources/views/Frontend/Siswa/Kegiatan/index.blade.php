@@ -23,17 +23,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>20 April 2024</td>
-                                <td>Memasang Kabel</td>
-                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, sunt sint! Provident id
-                                    cupiditate pariatur nemo ipsum nostrum alias explicabo.</td>
-                                <td><img src="{{ asset('dist/img/undraw_profile_2.svg') }}" alt=""></td>
-                                <td><a href="{{ route('edit-kegiatan') }}" class="btn btn-sm btn-success">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
+                            @foreach ($kegiatan as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->tanggal }}</td>
+                                    <td>{{ $item->judul }}</td>
+                                    <td>{{ $item->deskripsi }}</td>
+                                    <td class="text-center"><img
+                                            src="{{ asset('uploads/kegiatan/' . Auth::user()->name . '/' . $item->foto) }}"
+                                            alt="" class="img-fluid" style="max-width: 200px"></td>
+                                    <td><a href="{{ route('edit-kegiatan', $item->id) }}"
+                                            class="btn btn-sm btn-success">Edit</a>
+                                        <a href="{{ route('delete-kegiatan', $item->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

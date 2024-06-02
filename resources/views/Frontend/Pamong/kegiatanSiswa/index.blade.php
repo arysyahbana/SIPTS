@@ -20,13 +20,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>123456</td>
-                            <td>Joni</td>
-                            <td>TKJ</td>
-                            <td><a href="{{ route('detail-cek-kegiatan') }}" class="btn btn-sm btn-danger">Lihat</a></td>
-                        </tr>
+                        @foreach ($dataPamong as $item)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$item->siswa->nis}}</td>
+                                <td>{{$item->siswa->nama}}</td>
+                                <td>{{$item->siswa->bidang_keahlian}}</td>
+                                <td><a href="{{ route('pamong-detail-cek-kegiatan',$item->siswa->id) }}" class="btn btn-sm btn-danger">Lihat</a></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
