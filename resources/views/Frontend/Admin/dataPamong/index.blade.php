@@ -26,10 +26,10 @@
                             @foreach ($user as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->user->nip }}</td>
-                                    <td>{{ $item->user->name }}</td>
-                                    <td>{{ $item->siswa->nama }}</td>
-                                    <td>{{ $item->siswa->bidang_keahlian }}</td>
+                                    <td>{{ $item->user->nip ?? '' }}</td>
+                                    <td>{{ $item->user->name ??''}}</td>
+                                    <td>{{ $item->siswa->nama??'' }}</td>
+                                    <td>{{ $item->siswa->bidang_keahlian ??''}}</td>
                                     <td><a href="{{ route('edit-pamong', [$item->id]) }}"
                                             class="btn btn-sm btn-success">Edit</a>
                                         <form action="{{ route('delete-pamong', [$item->id]) }}" method="POST" style="display: inline;">
