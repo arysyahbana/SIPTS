@@ -27,17 +27,17 @@
                     </thead>
                     <tbody>
                         @foreach ($kegiatan as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->tanggal }}</td>
-                            <td>{{ $item->judul }}</td>
-                            <td>{{ $item->deskripsi }}</td>
-                            <td class="text-center"><img
-                                    src="{{ asset('uploads/kegiatan/' . $item->user->name . '/' . $item->foto) }}"
-                                    alt="" class="img-fluid" style="max-width: 200px">
-                            </td>
-                        </tr>
-                    @endforeach
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->tanggal }}</td>
+                                <td>{{ $item->judul }}</td>
+                                <td>{{ $item->deskripsi }}</td>
+                                <td class="text-center"><img
+                                        src="{{ $item->user ? asset('uploads/kegiatan/' . $item->user->name . '/' . $item->foto) : '' }}"
+                                        alt="" class="img-fluid" style="max-width: 200px">
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

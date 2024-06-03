@@ -54,7 +54,7 @@ Route::get('/data-pamong', [PamongController::class, 'show'])->name('show-pamong
 Route::get('/add-pamong', [PamongController::class, 'add'])->name('add-pamong');
 Route::post('store-pamong', [PamongController::class, 'store'])->name('store-pamong');
 Route::get('/edit-pamong/{id}', [PamongController::class, 'edit'])->name('edit-pamong');
-Route::put('/update-pamong/{id}', [PamongController::class, 'update'])->name('update-pamong');
+Route::put('/update-pamong/{id}/{id2}', [PamongController::class, 'update'])->name('update-pamong');
 Route::delete('/delete-pamong/{id}', [PamongController::class, 'delete'])->name('delete-pamong');
 
 // data Siswa

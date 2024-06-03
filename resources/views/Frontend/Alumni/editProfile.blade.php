@@ -44,6 +44,8 @@
                             <option value="Tidak Bekerja"
                                 {{ $dataSiswa->status_pekerjaan == 'Tidak Bekerja' ? 'selected' : '' }}>Tidak Bekerja
                             </option>
+                            <option value="kuliah" {{ $dataSiswa->status_pekerjaan == 'kuliah' ? 'selected' : '' }}>
+                                Kuliah</option>
                             <option value="Bekerja" {{ $dataSiswa->status_pekerjaan == 'Bekerja' ? 'selected' : '' }}>
                                 Bekerja</option>
                         </select>

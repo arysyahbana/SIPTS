@@ -33,7 +33,7 @@ class PamongController extends Controller
         //     'nip' => 'required',
         //     'name' => 'required',
         // ]);
-        if (empty([[$request->nip, $request->name, $request->password, $request->email]])) {
+        if (!empty([[$request->nip, $request->name, $request->password, $request->email]])) {
             $store = new User();
             $store->nip = $request->nip;
             $store->name = $request->name;
@@ -63,7 +63,7 @@ class PamongController extends Controller
         $siswa = Siswa::all();
         return view('Frontend.Admin.dataPamong.edit', compact('page', 'user', 'siswa'));
     }
-    public function update(Request $request, $id)
+    public function update(Request $request, $id,$id2)
     {
         $request->validate([
             'nip' => 'required',
@@ -78,9 +78,11 @@ class PamongController extends Controller
         $user->password = Hash::make($request->password);
         // $user->id_siswa = $request->namaSiswa;
         $user->update();
+        // return $id;
 
-        $pamong = Pamong::where([['id_siswa', $request->namaSiswa], ['id_pamong', $id]])->first();
-        $pamong->id_pamong = $user->id;
+        $pamong = Pamong::where('id_pamong', $id)->where('id',$id2)->first();
+        // return $pamong;
+        $pamong->id_pamong = $id;
         $pamong->id_siswa = $request->namaSiswa;
         $pamong->update();
 

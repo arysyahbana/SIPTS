@@ -9,7 +9,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Edit Pamong</h6>
             </div>
             <div class="card-body">
-                <form action="{{ route('update-pamong', $user->user->id) }}" method="POST">
+                <form action="{{ route('update-pamong', [$user->user->id,$user->id]) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
